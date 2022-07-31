@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "FT88 Gothique";
+  src: url("./fonts/FT88-Gothique.woff2") format("woff2"),
+       url("./fonts/FT88-Gothique.woff") format("woff");
+}
+

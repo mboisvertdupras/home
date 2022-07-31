@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-stone-100">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marc Boisvert-Dupras</title>
+    <link rel="stylesheet" href="public/app.css">
+</head>
+<body class="max-w-2xl mx-4 sm:mx-auto py-16 sm:py-20">
+    <main class="relative w-full h-full">
+        <figure>
+            <img src="public/img/my-big-face.jpg" alt="Me" class="rounded-full h-24 w-24 ring-white ring-4 shadow-lg">
+        </figure>
+        <p class="mt-6 text-xl">👋 Hey, I'm</p>
+        <h1 class="mt-3 text-4xl font-display">Marc<br/>Boisvert-Dupras</h1>
+        <div class="prose text-lg">
+            <p class="mt-3 text-xl">I'm a software developer and a web enthusiast.</p>
+            <p class="mt-8">
+                Here are some things about me:
+            </p>
+            <ul class="mt-2 list-inside list-disc">
+                <li>🇨🇦 I live in <strong class="font-semibold">Granby, QC, Canada</strong></li>
+                <li>👨‍💻 I work at <strong class="font-semibold">
+                        <a href="https://agencetolle.com" class="inline-flex items-center" target="_blank" rel="noopener noreferrer">
+                            <span class="underline text-blue-500">Tollé, Agence Web</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="ml-1 w-5 h-5" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="none" class="stroke-stone-400" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
+                    </strong>
+                </li>
+                <li>🔥 I'm passionate about <strong class="font-semibold">edge computing, reactive JS frameworks, e-commerce & thoughtful UI/UX</strong></li>
+                <li>🐈‍⬛ I have a cat named <strong class="font-semibold">Onyx</strong> <span class="italic text-stone-400">(he's my son)</span></li>
+            </ul>
+            <hr class="divider my-8">
+            <h2 class="text-xl font-semibold">🛠 Language & Tools</h2>
+            <ul class="mt-6 grid grid-cols-5 gap-4" x-data="{ tools: [
+                {
+                    name: 'JavaScript',
+                    slug: 'javascript',
+                },
+                {
+                    name: 'TypeScript',
+                    slug: 'typescript',
+                },
+                {
+                    name: 'React',
+                    slug: 'react',
+                },
+                {
+                    name: 'Vue',
+                    slug: 'vue',
+                },
+                {
+                    name: 'PHP',
+                    slug: 'php',
+                },
+                {
+                    name: 'WordPress',
+                    slug: 'wordpress',
+                },
+                {
+                    name: 'Vercel',
+                    slug: 'vercel',
+                },
+                {
+                    name: 'Cloudflare',
+                    slug: 'cloudflare',
+                }
+            ] }">
+                <template x-for="tool in tools">
+                    <li class="flex items-center justify-center">
+                        <img class="w-14 h-14" :src="`https://github.com/github/explore/raw/main/topics/${tool.slug}/${tool.slug}.png`" :alt="tool.name">
+                    </li>
+                </template>
+            </ul>
+        </div>
+        <hr class="divider my-8">
+        <h2 class="text-xl font-semibold">📭 Reach me</h2>
+        <ul class="flex divide-x mt-6">
+            <li class="px-2"><a href="https://www.linkedin.com/in/marc-boisvert-dupras-22a98760/" class="underline text-blue-500" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li class="px-2"><a href="https://www.instagram.com/marcbd_/" class="underline text-blue-500" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            <li class="px-2"><a href="mailto:marcboisvert.dupras@outlook.com" class="underline text-blue-500">Email</a></li>
+        </ul>
+    </main>
+    <script src="//unpkg.com/alpinejs" defer></script>
+</body>
+</html>

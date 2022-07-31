@@ -1,0 +1,16 @@
+{
+  "name": "personal-site",
+  "version": "1.0.0",
+  "description": "My personal homepage.",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx tailwindcss -i ./src/css/app.css -o ./public/app.css --watch",
+    "build": "npx tailwindcss -i ./src/css/app.css -o ./public/app.css --minify"
+  },
+  "author": "Marc Boisvert-Dupras <marcboisvert.dupras@outlook.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@tailwindcss/typography": "^0.5.4",
+    "tailwindcss": "^3.1.7"
+  }
+}
