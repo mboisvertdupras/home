@@ -6,20 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marc Boisvert-Dupras</title>
     
-  <script type="module" crossorigin src="/assets/index.d51f5b4c.js"></script>
-  <link rel="stylesheet" href="/assets/index.82b00a05.css">
+  <script type="module" crossorigin src="/assets/index.490b2f7f.js"></script>
+  <link rel="stylesheet" href="/assets/index.869b1c38.css">
 </head>
 <body x-data="app" class="home h-full">
     <div
         x-html="navigation"
     >
     </div>
-    <main class="relative max-w-3xl mx-4 sm:mx-auto py-16 sm:pt-36 sm:pb-20 text-sage-900">
-        <p class="mt-6 text-3xl">👋 Hey, I'm</p>
-        <h1 class="mt-3 text-8xl font-display">Marc<br/>Boisvert-Dupras</h1>
+    <main class="relative max-w-3xl mx-4 sm:mx-auto pt-28 pb-16 sm:pt-36 sm:pb-20 text-sage-800">
+        <div class="mt-6 text-xl sm:text-3xl">
+            <div class="inline-block animate-wave origin-[70%_70%] mr-1">👋</div> Hey, I'm
+        </div>
+        <h1 class="mt-3 text-4xl sm:text-8xl font-display">Marc<br/>Boisvert-Dupras</h1>
         <div class="prose text-lg">
-            <p class="mt-6 text-2xl">I'm a software developer and a web enthusiast.</p>
-            <p class="mt-8">
+            <p class="mt-6 sm:text-2xl text-sage-500">I'm a software developer and a web enthusiast.</p>
+            <p class="mt-10">
                 Here are some things about me:
             </p>
             <ul class="mt-3 list-inside list-disc">
@@ -34,13 +36,12 @@
                 <li>🔥 I'm passionate about <strong class="font-semibold">edge computing, reactive JS frameworks, e-commerce & thoughtful UI/UX</strong></li>
                 <li>🐈‍⬛ I have a cat named <strong class="font-semibold">Onyx</strong> <span class="italic text-sage-500">(he's my son)</span></li>
             </ul>
-            <hr class="divider my-8">
+            <hr class="divider my-10">
             <h2 class="text-xl font-semibold">🛠 Language & Tools</h2>
-            <ul class="mt-6 grid grid-cols-5 gap-4">
+            <ul class="mt-6 grid grid-cols-4 sm:grid-cols-5 gap-4">
                 <template x-for="tool in tools">
-                    <li class="group p-8 rounded-xl flex items-center justify-center bg-sage-300">
+                    <li class="group p-2 sm:p-8 rounded-lg sm:rounded-xl flex items-center justify-center bg-sage-300">
                         <img
-                            class="grayscale group-hover:grayscale-0 transition-all"
                             :src="`https://github.com/github/explore/raw/main/topics/${tool.slug}/${tool.slug}.png`"
                             :alt="tool.name"
                         >
@@ -48,7 +49,7 @@
                 </template>
             </ul>
         </div>
-        <hr class="divider my-8">
+        <hr class="divider my-10">
         <h2 class="text-xl font-semibold">📭 Reach me</h2>
         <ul class="flex divide-x mt-6">
             <li class="px-2"><a href="https://www.linkedin.com/in/marc-boisvert-dupras-22a98760/" class="underline text-sage-500" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>

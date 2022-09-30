@@ -7,6 +7,7 @@ export default [
         'Tailwind',
         'Alpine.js',
         'Vite',
+        'Vercel',
       ],
       is_external: true,
   }
