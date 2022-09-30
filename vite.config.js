@@ -8,6 +8,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         labs: resolve(__dirname, 'labs/index.html')
       }
-    }
+    },
+    outDir: 'docs'
   }
 })
