@@ -2,7 +2,7 @@ import pages from '../content/pages'
 
 const navigation = `
   <nav class="fixed top-0 w-full z-10">
-    <div class="mx-auto max-w-6xl py-6 flex items-center justify-between text-sage-500">
+    <div class="mx-auto max-w-6xl px-4 py-6 flex items-center justify-between text-sage-500">
       <a href="/" class="relative block h-16">
         <svg class="w-auto h-full" viewBox="0 0 217 295" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M15 163.5V279.5H108.375M15 163.5H108.375M15 163.5V27.5L108.375 84.5L201.75 27.5V163.5M108.375 279.5V222.5M108.375 279.5H201.75V163.5M108.375 222.5H15M108.375 222.5V163.5M108.375 163.5H201.75" stroke="black" stroke-width="30"/>
