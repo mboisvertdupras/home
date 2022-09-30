@@ -1,10 +1,15 @@
 import navigation from './components/navigation'
+import footer from './components/footer'
 import projects from './content/projects'
 
 export default () => ({
   navigation,
 
+  footer,
+
   projects,
+
+  mainClasses: 'relative max-w-3xl mx-4 sm:mx-auto pt-28 pb-16 sm:pt-36 text-sage-800',
 
   tools: [
     {

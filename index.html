@@ -8,11 +8,8 @@
     <link rel="stylesheet" href="src/css/app.css">
 </head>
 <body x-data="app" class="home h-full">
-    <div
-        x-html="navigation"
-    >
-    </div>
-    <main class="relative max-w-3xl mx-4 sm:mx-auto pt-28 pb-16 sm:pt-36 sm:pb-20 text-sage-800">
+    <div x-html="navigation"></div>
+    <main :class="mainClasses">
         <div class="mt-6 text-xl sm:text-3xl">
             <div class="inline-block animate-wave origin-[70%_70%] mr-1">👋</div> Hey, I'm
         </div>
@@ -47,13 +44,7 @@
                 </template>
             </ul>
         </div>
-        <hr class="divider my-10">
-        <h2 class="text-xl font-semibold">📭 Reach me</h2>
-        <ul class="flex divide-x mt-6">
-            <li class="px-2"><a href="https://www.linkedin.com/in/marc-boisvert-dupras-22a98760/" class="underline text-sage-500" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-            <li class="px-2"><a href="https://www.instagram.com/marcbd_/" class="underline text-sage-500" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-            <li class="px-2"><a href="mailto:marcboisvert.dupras@outlook.com" class="underline text-sage-500">Email</a></li>
-        </ul>
+        <div x-html="footer"></div>
     </main>
     <script type="module" src="src/js/index.js"></script>
 </body>
