@@ -8,7 +8,7 @@ const navigation = `
         <path class="stroke-sage-600 " d="M15 163.5V279.5H108.375M15 163.5H108.375M15 163.5V27.5L108.375 84.5L201.75 27.5V163.5M108.375 279.5V222.5M108.375 279.5H201.75V163.5M108.375 222.5H15M108.375 222.5V163.5M108.375 163.5H201.75" stroke-width="30"/>
         </svg>
       </a>
-      <ul class="flex space-x-8">
+      <ul class="hidden sm:flex space-x-8">
         ${pages.map(page => `
           <li>
             <a

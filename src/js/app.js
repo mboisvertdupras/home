@@ -3,6 +3,8 @@ import footer from './components/footer'
 import projects from './content/projects'
 
 export default () => ({
+  loaded: false,
+  
   navigation,
 
   footer,
