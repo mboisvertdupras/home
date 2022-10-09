@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <>
+    <div className="mx-auto max-w-3xl">
       <hr className="divider my-10" />
       <footer className="flex items-center justify-end">
         <ul className="flex space-x-4 text-sage-400">
@@ -72,6 +72,6 @@ export default function Footer() {
           </li>
         </ul>
       </footer>
-    </>
+    </div>
   );
 }

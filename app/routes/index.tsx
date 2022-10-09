@@ -1,6 +1,10 @@
 export default function Index() {
   const tools = [
     {
+      name: "WordPress",
+      slug: "wordpress",
+    },
+    {
       name: "JavaScript",
       slug: "javascript",
     },
@@ -9,20 +13,20 @@ export default function Index() {
       slug: "typescript",
     },
     {
-      name: "React",
-      slug: "react",
+      name: "PHP",
+      slug: "php",
     },
     {
       name: "Vue",
       slug: "vue",
     },
     {
-      name: "PHP",
-      slug: "php",
+      name: "React",
+      slug: "react",
     },
     {
-      name: "WordPress",
-      slug: "wordpress",
+      name: "GraphQL",
+      slug: "graphql",
     },
     {
       name: "Vercel",
@@ -35,7 +39,7 @@ export default function Index() {
   ];
 
   return (
-    <>
+    <div className="mx-auto max-w-3xl">
       <div className="mt-6 text-xl sm:text-3xl">
         <div className="mr-1 inline-block origin-[70%_70%] animate-wave">
           👋
@@ -108,9 +112,10 @@ export default function Index() {
           {tools.map((tool) => (
             <li
               key={tool.slug}
-              className="group flex items-center justify-center rounded-lg bg-sage-300 p-2 sm:rounded-xl sm:p-8"
+              className="group flex items-center justify-center rounded-lg bg-sage-200 p-2 sm:rounded-xl sm:p-8"
             >
               <img
+                className="my-0"
                 src={`https://github.com/github/explore/raw/main/topics/${tool.slug}/${tool.slug}.png`}
                 alt={tool.name}
               />
@@ -118,6 +123,6 @@ export default function Index() {
           ))}
         </ul>
       </div>
-    </>
+    </div>
   );
 }

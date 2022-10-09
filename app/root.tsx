@@ -7,12 +7,31 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+
 import styles from './styles/app.css';
+
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 
 export function links() {
   return [{ rel: "stylesheet", href: styles }]
+}
+
+export function ErrorBoundary({ error }) {
+  return (
+    <html>
+      <head>
+        <title>Oh no!</title>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <h1>{error.message}</h1>
+        <p>{error.stack}</p>
+        <Scripts />
+      </body>
+    </html>
+  );
 }
 
 export const meta: MetaFunction = () => ({
@@ -30,7 +49,7 @@ export default function App() {
       </head>
       <body className="h-full">
         <Navigation />
-        <main className="relative mx-4 max-w-3xl pt-28 pb-16 text-sage-800 sm:mx-auto sm:pt-36">
+        <main className="relative mx-4 pt-28 pb-16 text-sage-800 sm:mx-auto sm:pt-30">
           <Outlet />
           <ScrollRestoration />
           <Scripts />
