@@ -1,9 +1,0 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-
-@font-face {
- font-family: 'Bluunext Bold';
- src:url(fonts/bluunext-bold-webfont.woff2) format("woff2"),
- url(fonts/bluunext-bold-webfont.woff) format("woff")
-}

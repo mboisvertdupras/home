@@ -1,6 +1,7 @@
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./**/*.html", "./src/js/**/*.js"],
+  content: ["./app/**/*.{ts,tsx,jsx,js}"],
   theme: {
     extend: {
       fontFamily: {
@@ -9,12 +10,13 @@ module.exports = {
       colors: {
         sage: {
           100: "#f3f7f2",
-          200: "#e6efdf",
-          300: "#ebf1e7",
+          150: "#e6efdf",
+          200: "#ebf1e7",
+          300: "#d4e2cd",
           400: "#c7d9be",
           500: "#4e6c3e",
           600: "#3b522f",
-          700: "#374151",
+          700: "#344829",
           800: "#293820",
           900: "#212e1a",
         }
@@ -33,8 +35,19 @@ module.exports = {
           '60%': { transform: 'rotate(0.0deg) scale(1)' },
           '100%': { transform: 'rotate(0.0deg) scale(1)' }
         }
-      }
+      },
+      typography: ({ theme }) => ({
+        DEFAULT: {
+          css: {
+            '--tw-prose-body': theme('colors.sage.500'),
+            '--tw-prose-headings': theme('colors.sage.700'),
+          }
+        }
+      })
     },
   },
-  plugins: [],
-}
+  plugins: [
+    require("@tailwindcss/typography"),
+    require("@tailwindcss/aspect-ratio"),
+  ],
+};
