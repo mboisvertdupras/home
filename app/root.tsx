@@ -6,11 +6,15 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
+import { client } from "graphql/client";
+import { gql } from "@apollo/client";
 
 import styles from './styles/app.css';
 
 import Navigation from './components/Navigation';
+import MobileNavigation from './components/MobileNavigation';
 import Footer from './components/Footer';
 
 export function links() {
@@ -40,7 +44,29 @@ export const meta: MetaFunction = () => ({
   viewport: "width=device-width,initial-scale=1",
 });
 
+export const loader = async () => {
+  const res = await client.query({
+    query: gql`
+      {
+        menu(id: "Main menu", idType: NAME) {
+          menuItems {
+            nodes {
+              uri
+              label
+            }
+          }
+        }
+      }
+    `,
+  });
+
+  return res;
+}
+
 export default function App() {
+  const { data } = useLoaderData();
+  const menuItems = data?.menu.menuItems.nodes;
+
   return (
     <html lang="en" className="h-full bg-sage-100">
       <head>
@@ -48,7 +74,7 @@ export default function App() {
         <Links />
       </head>
       <body className="h-full">
-        <Navigation />
+        <Navigation menuItems={menuItems} />
         <main className="relative mx-4 pt-28 pb-16 text-sage-800 sm:mx-auto sm:pt-30">
           <Outlet />
           <ScrollRestoration />
