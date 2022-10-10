@@ -13,6 +13,7 @@ type Post = {
     slug: string;
     projectSettings: {
         externalUrl: string;
+        description: string;
     }
     technologies: {
         nodes: Tech[];
@@ -27,6 +28,7 @@ const POSTS_QUERY = gql`
           slug
           projectSettings {
             externalUrl
+            description
           }
           technologies {
             nodes {
@@ -77,6 +79,7 @@ export default function Posts() {
                     </span>
                 )}
                 <h3 className="text-xl font-medium">{post.title}</h3>
+                <p>{post.projectSettings.description}</p>
                 <hr className="my-4 border-sage-300" />
                 <div className="flex flex-wrap -m-1">
                   {post.technologies?.nodes

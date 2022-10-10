@@ -41,6 +41,8 @@ module.exports = {
           css: {
             '--tw-prose-body': theme('colors.sage.500'),
             '--tw-prose-headings': theme('colors.sage.700'),
+            '--tw-prose-links': theme('colors.sage.800'),
+            '--tw-prose-bold': theme('colors.sage.700'),
           }
         }
       })

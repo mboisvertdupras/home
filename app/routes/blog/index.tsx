@@ -26,7 +26,7 @@ type Post = {
 
 const POSTS_QUERY = gql`
   {
-    posts(first: 10, after: null) {
+    posts(first: 10, after: null, where: { status: PUBLISH, orderby: [{ field: DATE, order: DESC }] }) {
       edges {
         cursor
         node {
@@ -76,14 +76,14 @@ export default function Posts() {
         Thoughts and ideas about software development.
       </p>
       <ul className="my-12 grid grid-cols-1 gap-4">
-        {posts.map((post: Post) => (
+        {posts.length > 0 && posts.map((post: Post) => (
           <Link
             key={post.node.id}
             className="group relative block"
             to={`/blog${post.node.uri}`}
             // style={`transition-delay: ${i * 150}ms`}
           >
-            <li className="flex rounded-xl bg-sage-200 p-8 transition group-hover:cursor-pointer group-hover:bg-sage-200">
+            <li className="flex rounded-xl bg-sage-200 p-8 transition group-hover:cursor-pointer group-hover:bg-sage-150">
               <div className="w-full">
                 <div className="mb-2 text-xs uppercase tracking-wide text-sage-500">
                   {dayjs(post.node.date).format("MMMM DD, YYYY")} /{" "}
