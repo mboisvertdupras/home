@@ -10,37 +10,21 @@ import {
 } from "@remix-run/react";
 import { client } from "graphql/client";
 import { gql } from "@apollo/client";
+import { DynamicLinks } from "remix-utils";
 
 import styles from './styles/app.css';
 
 import Navigation from './components/Navigation';
-import MobileNavigation from './components/MobileNavigation';
 import Footer from './components/Footer';
 
 export function links() {
   return [{ rel: "stylesheet", href: styles }]
 }
 
-export function ErrorBoundary({ error }) {
-  return (
-    <html>
-      <head>
-        <title>Oh no!</title>
-        <Meta />
-        <Links />
-      </head>
-      <body>
-        <h1>{error.message}</h1>
-        <p>{error.stack}</p>
-        <Scripts />
-      </body>
-    </html>
-  );
-}
-
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
   title: "Marc Boisvert-Dupras",
+  description: "Marc Boisvert-Dupras is a web developer and designer from Montreal, Canada.",
   viewport: "width=device-width,initial-scale=1",
 });
 
@@ -71,6 +55,7 @@ export default function App() {
     <html lang="en" className="h-full bg-sage-100">
       <head>
         <Meta />
+        <DynamicLinks />
         <Links />
       </head>
       <body className="h-full">
@@ -82,6 +67,23 @@ export default function App() {
           <LiveReload />
           <Footer/>
         </main>
+      </body>
+    </html>
+  );
+}
+
+export function ErrorBoundary({ error }) {
+  return (
+    <html>
+      <head>
+        <title>Oh no!</title>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <h1>{error.message}</h1>
+        <p>{error.stack}</p>
+        <Scripts />
       </body>
     </html>
   );

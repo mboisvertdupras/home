@@ -3,14 +3,40 @@ import type { MetaFunction } from "@remix-run/node";
 import { client } from "graphql/client";
 import { gql } from "@apollo/client";
 import dayjs from "dayjs";
+import { decode } from "html-entities";
+import type { DynamicLinksFunction } from "remix-utils";
 
 type Category = {
     name: string;
 }
 
-export const meta: MetaFunction = ({ data }) => ({
-  title: `${data.data.post.title} | Marc Boisvert-Dupras `
-});
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
+  if (!data) {
+    return {
+      title: "Oops!",
+      description: "Post not found",
+    };
+  }
+
+  return {
+    title: `${data.data.post.seoTitle} | Marc Boisvert-Dupras`,
+    description: decode(data.data.post.seoDescription)
+  };
+};
+
+const dynamicLinks: DynamicLinksFunction<typeof loader> = ({ data }) => {
+  console.log(data)
+  return [
+    {
+      rel: 'canonical', href: data.data.post.seoCanonical,
+    },
+  ];
+}
+
+export const handle = {
+  dynamicLinks,
+};
+
 
 export const loader = async ({ params }) => {
   const res = await client.query({
@@ -19,6 +45,9 @@ export const loader = async ({ params }) => {
             title
             content
             date
+            seoTitle
+            seoDescription
+            seoCanonical
             featuredImage {
                 node {
                     id
@@ -55,7 +84,7 @@ export default function Post() {
                 {category.name}
               </span>
             ))
-            .reduce((prev, curr) => [prev, ", ", curr])}
+            .reduce((prev: Category, curr: Category) => [prev, ", ", curr])}
         </div>
         <h1 className="mt-3 font-display text-4xl sm:text-7xl">
           {post.title}
