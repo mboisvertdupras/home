@@ -1,4 +1,3 @@
-import type { MetaFunction } from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -6,11 +5,13 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  isRouteErrorResponse,
   useLoaderData,
+  useRouteError,
 } from "@remix-run/react";
 import { client } from "graphql/client";
 import { gql } from "@apollo/client";
-import { DynamicLinks } from "remix-utils";
+import type { V2_MetaFunction } from "@remix-run/node";
 
 import styles from './styles/app.css';
 
@@ -21,12 +22,20 @@ export function links() {
   return [{ rel: "stylesheet", href: styles }]
 }
 
-export const meta: MetaFunction = () => ({
-  charset: "utf-8",
-  title: "Marc Boisvert-Dupras",
-  description: "Marc Boisvert-Dupras is a web developer and designer from Montreal, Canada.",
-  viewport: "width=device-width,initial-scale=1",
-});
+export const meta: V2_MetaFunction = ({ matches }) => {
+  return [
+    { title: `Marc Boisvert-Dupras` },
+    {
+      name: 'description',
+      content: 'Marc Boisvert-Dupras is a web developer and designer from Montreal, Canada.'
+    },
+    {
+      tagName: 'link',
+      rel: 'canonical',
+      href: 'https://marc.boisvertdupras.com'
+    },
+  ];
+};
 
 export const loader = async () => {
   const res = await client.query({
@@ -54,8 +63,9 @@ export default function App() {
   return (
     <html lang="en" className="h-full bg-sage-100">
       <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
-        <DynamicLinks />
         <Links />
       </head>
       <body className="h-full">
@@ -67,23 +77,6 @@ export default function App() {
           <LiveReload />
           <Footer/>
         </main>
-      </body>
-    </html>
-  );
-}
-
-export function ErrorBoundary({ error }) {
-  return (
-    <html>
-      <head>
-        <title>Oh no!</title>
-        <Meta />
-        <Links />
-      </head>
-      <body>
-        <h1>{error.message}</h1>
-        <p>{error.stack}</p>
-        <Scripts />
       </body>
     </html>
   );
