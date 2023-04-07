@@ -1,44 +1,34 @@
 import { useLoaderData } from "@remix-run/react";
-import type { MetaFunction } from "@remix-run/node";
 import { client } from "graphql/client";
 import { gql } from "@apollo/client";
 import dayjs from "dayjs";
 import { decode } from "html-entities";
-import type { DynamicLinksFunction } from "remix-utils";
+import type { LoaderArgs, LoaderFunction, V2_MetaFunction } from "@remix-run/node";
+import { Response } from "@remix-run/node";
 
 type Category = {
     name: string;
 }
 
-export const meta: MetaFunction<typeof loader> = ({ data }) => {
-  if (!data) {
-    return {
-      title: "Oops!",
-      description: "Post not found",
-    };
-  }
+export const meta: V2_MetaFunction = ({ matches }) => {
+  let data = matches[1].data;
 
-  return {
-    title: `${data.data.post.seoTitle} | Marc Boisvert-Dupras`,
-    description: decode(data.data.post.seoDescription)
-  };
-};
-
-const dynamicLinks: DynamicLinksFunction<typeof loader> = ({ data }) => {
-  console.log(data)
   return [
-    {
-      rel: 'canonical', href: data.data.post.seoCanonical,
-    },
+    { title: `${decode(data.post.seoTitle)} | Marc Boisvert-Dupras` },
+    { name: 'description', content: decode(data.post.seoDescription) },
+    { tagName: 'link', rel: 'canonical', href: data.post.seoCanonical },
+    { 'script:ld+json': {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          ...JSON.parse(data.post.seoLDJSON)
+        ]
+      }
+    }
   ];
-}
-
-export const handle = {
-  dynamicLinks,
 };
 
-
-export const loader = async ({ params }) => {
+export const loader: LoaderFunction = async ({ params }: LoaderArgs) => {
   const res = await client.query({
     query: gql`{
         post(id: "${params.slug}", idType: SLUG) {
@@ -48,6 +38,7 @@ export const loader = async ({ params }) => {
             seoTitle
             seoDescription
             seoCanonical
+            seoLDJSON
             featuredImage {
                 node {
                     id
@@ -66,12 +57,15 @@ export const loader = async ({ params }) => {
     `,
   });
 
-  return res;
+  if (!res.data.post) {
+    throw new Response("Not found", { status: 404 });
+  }
+
+  return res.data;
 };
 
 export default function Post() {
-  const { data } = useLoaderData();
-  const post = data?.post;
+  const { post } = useLoaderData();
 
   return (
     <article>
