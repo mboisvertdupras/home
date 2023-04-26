@@ -13,6 +13,7 @@
     "@remix-run/vercel": "^1.15.0",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/typography": "^0.5.9",
+    "@vercel/analytics": "^1.0.0",
     "@vercel/node": "^2.10.2",
     "dayjs": "^1.11.7",
     "html-entities": "^2.3.3",

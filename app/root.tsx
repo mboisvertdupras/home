@@ -11,6 +11,7 @@ import {
 } from "@remix-run/react";
 import { client } from "graphql/client";
 import { gql } from "@apollo/client";
+import { Analytics } from '@vercel/analytics/react';
 import type { V2_MetaFunction } from "@remix-run/node";
 
 import styles from './styles/app.css';
@@ -69,6 +70,7 @@ export default function App() {
         <Links />
       </head>
       <body className="h-full">
+        <Analytics />
         <Navigation menuItems={menuItems} />
         <main className="relative mx-4 pt-28 pb-16 text-sage-800 sm:mx-auto sm:pt-30">
           <Outlet />
